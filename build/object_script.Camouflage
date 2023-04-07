@@ -1,0 +1,10 @@
+animatedlabel.o
+cmath.o
+main.o
+mainwindow.o
+qcustomplot.o
+qrc_res.o
+moc_animatedlabel.o
+moc_cmath.o
+moc_mainwindow.o
+moc_qcustomplot.o

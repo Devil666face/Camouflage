@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     animatedlabel.cpp \
+    cmath.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp
 
 HEADERS += \
     animatedlabel.h \
+    cmath.h \
     mainwindow.h \
     qcustomplot.h \
     random.h
