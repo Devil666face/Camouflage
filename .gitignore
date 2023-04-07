@@ -1,0 +1,6 @@
+/build/moc*.o
+/build/moc*.cpp
+/build/*.o
+/build/*.cpp
+/build/Camouflage.exe
+*.exe
