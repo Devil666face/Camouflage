@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
                 QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     a.installTranslator(&qtTranslator);
     MainWindow w;
-//    w.showMaximized();
-    w.show();
+    w.showMaximized();
     return a.exec();
 }
