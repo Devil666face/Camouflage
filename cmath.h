@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QWidget>
 #include <QCheckBox>
+#include <QSpinBox>
 
 enum RangeCamouflage {
     VISUAL,
@@ -42,6 +43,7 @@ private:
     QMap <QString, qreal> get_range_camouflage_Rl();
     QList<QString> get_current_range_list(QTableWidget *&tableWidget);
     qreal get_coef_for_range(QTableWidget *&tableWidget, QString key, int i);
+    int get_count_for_range(QTableWidget *&tableWidget, int i);
     QMap <QString, qreal> get_dict_for_range_key(QString key);
     int case_variant(QList<QString> _current_range_list);
 };

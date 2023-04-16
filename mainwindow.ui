@@ -69,6 +69,11 @@
               <string>Средство скрытия</string>
              </property>
             </column>
+            <column>
+             <property name="text">
+              <string>Количество средств</string>
+             </property>
+            </column>
            </widget>
           </item>
          </layout>

@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     math = new cmath();
+    ui->comboBox_obj->setCurrentIndex(2);
     create_button_calc(create_button(":/new/prefix1/icons/calc.gif","Нажмите для вычисления",64));
     resize_table(ui->tableWidget_weapons);
 }
@@ -30,9 +31,10 @@ void MainWindow::resize_table(QTableWidget *tableWidget)
     tableWidget->verticalHeader()->resizeContentsPrecision();
     tableWidget->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
     tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
-    tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-    tableWidget->setColumnWidth(0,150);
-    //    tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+//    tableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+//    tableWidget->setColumnWidth(0,150);
+//    tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::update_table(QTableWidget *tableWidget, QMap<RangeCamouflage, QString> _range_dict)
@@ -40,6 +42,7 @@ void MainWindow::update_table(QTableWidget *tableWidget, QMap<RangeCamouflage, Q
     for (int i=0;i<tableWidget->rowCount();i++) {
         set_combo_box_range_in_tableWidget(tableWidget, get_combo_box_camouflage_range(math->range_dict), i);
         tableWidget->setCellWidget(i,1,get_combo_box_for_obj(math->RangeCamouflageVisual));
+        tableWidget->setCellWidget(i,2,get_spin_box_count());
     }
 }
 
@@ -68,6 +71,15 @@ QComboBox *MainWindow::get_combo_box_for_obj(QMap<QString, qreal> _dict)
     return comboBox;
 }
 
+QSpinBox *MainWindow::get_spin_box_count()
+{
+    QSpinBox *spinBox = new QSpinBox();
+    spinBox->setMinimum(1);
+    spinBox->setMaximum(30);
+    spinBox->setValue(1);
+    return spinBox;
+}
+
 bool MainWindow::check_on_empty_table(int _weapon_count)
 {
     if (_weapon_count == 0) {
@@ -87,6 +99,9 @@ qreal MainWindow::get_P_detect()
     qreal P_detect = result_koef*P;
     if (P_detect > 1) {
         return 1;
+    }
+    if (P_detect < 0) {
+        return 0;
     }
     return P_detect;
 }

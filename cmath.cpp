@@ -9,7 +9,9 @@ qreal cmath::get_koef_from_tableWidget(QTableWidget *&tableWidget)
     qDebug()<<_current_range_list;
     for (int i=0;i<_current_range_list.size();i++) {
         qreal koef = get_coef_for_range(tableWidget, _current_range_list[i], i);
-        result_koef+=koef;
+        int count = get_count_for_range(tableWidget, i);
+//        qDebug()<<"count"<<count;
+        result_koef+=koef*count;
     }
 //    if (result_koef>1) result_koef=1;
     return result_koef;
@@ -19,6 +21,9 @@ QString cmath::get_value_from_cell_widget(QWidget *widget)
 {
     if (QComboBox* comboBox = qobject_cast<QComboBox*>(widget)) {
         return comboBox->currentText();
+    }
+    if (QSpinBox* spinBox = qobject_cast<QSpinBox*>(widget)) {
+        return QString::number(spinBox->value());
     }
 }
 
@@ -86,36 +91,39 @@ QMap<RangeCamouflage, QString> cmath::get_range_dict()
 QMap<QString, qreal> cmath::get_range_camouflage_Visual()
 {
     QMap <QString, qreal> _RangeCamouflageVisual;
-    _RangeCamouflageVisual["Применение маскировочного покрытия табельного или изготовленного из подручных материалов (П=15...20%)"] = 0.1;
-    _RangeCamouflageVisual["Применение маскировочного окрашивания"] = 0.2;
-    _RangeCamouflageVisual["Применение маскировочного окрашивания техники и сооружений или масок (П=50%)"] = 0.3;
-    _RangeCamouflageVisual["Применение масок, комплектов (П=60%) или маски (П=30%)"] = 0.4;
-    _RangeCamouflageVisual["Применение масок, комплектов (П=70%) или маски (П=50%) в сочетании с маскировочным окрашиванием"] = 0.5;
-    _RangeCamouflageVisual["Применение масок, комплектов (П=80...90%) или маски (П=70%) в сочетании с маскировочным окрашиванием"] = 0.6;
-    _RangeCamouflageVisual["Применение масок, комплектов (П=80%) в сочетании с маскировочным окрашиванием, применение средств аэрозольного противодействия с 2-3 кратным перекрытием площади объекта"] = 0.8;
-    _RangeCamouflageVisual["Применение масок, комплектов (П=90%) в сочетании с маскировочным окрашиванием"] = 0.9;
-    _RangeCamouflageVisual["Размещение техники под плотными навесами или в укрытиях арочного типа (П=100%)"] = 1.0;
+    _RangeCamouflageVisual["БАГ АРС-14КМ"] = 0.1;
+    _RangeCamouflageVisual["РДГ-2"] = 0.2;
+    _RangeCamouflageVisual["Дымовая шашка ДМ-11"] = 0.3;
+    _RangeCamouflageVisual["Дымовая шашка УДШ"] = 0.4;
+    _RangeCamouflageVisual["Дымовая шашка ШД-П"] = 0.5;
+    _RangeCamouflageVisual["Маскировочный комплект"] = 0.6;
+    _RangeCamouflageVisual["ЗДП-2"] = 0.8;
+    _RangeCamouflageVisual["ГМПП"] = 0.9;
+//    _RangeCamouflageVisual[""] = 1.0;
+    foreach (QString key, _RangeCamouflageVisual.keys()) {
+        _RangeCamouflageVisual[key] = _RangeCamouflageVisual[key]*0.1;
+    }
     return _RangeCamouflageVisual;
 }
 
 QMap<QString, qreal> cmath::get_range_camouflage_Infrared()
 {
     QMap <QString, qreal> _RangeCamouflageInfrared;
-    _RangeCamouflageInfrared["Применение теплоизоляционных материалов и маскирующих пенных покрытий в сочетании с улучшением условий охлаждения (вентиляции) аппаратных кабин"] = 0.5;
-    _RangeCamouflageInfrared["Применение теплоизоляционных материалов и маскирующих пенных покрытий в сочетании с улучшением условий охлаждения (вентиляции) агегатов питания"] = 0.65;
-    _RangeCamouflageInfrared["Установление козырьков из теплоизоляционных материалов, перекрывающих выпускные отверстия в направлении ИК приемника вентиляционных решеток и радиаторов"] = 0.6;
-    _RangeCamouflageInfrared["Установление козырьков из теплоизоляционных материалов, перекрывающих выпускные отверстия в направлении ИК приемника агрегатов электропитания"] = 0.4;
-    _RangeCamouflageInfrared["Установление козырьков из теплоизоляционных материалов, перекрывающих выпускные отверстия в направлении ИК приемника газотурбинных двигателей"] = 0.2;
+    _RangeCamouflageInfrared["Лакокрасочные покрытия"] = 0.5;
+    _RangeCamouflageInfrared["Уголковый отражатель"] = 0.65;
+    _RangeCamouflageInfrared["ГМПП"] = 0.6;
+    _RangeCamouflageInfrared["ПОР-01КФ"] = 0.4;
+//    _RangeCamouflageInfrared[""] = 0.2;
     return _RangeCamouflageInfrared;
 }
 
 QMap<QString, qreal> cmath::get_range_camouflage_Rl()
 {
     QMap <QString, qreal> _RangeCamouflageRl;
-    _RangeCamouflageRl["Применения радиопоглощающих материалов и радиорассеивающих масок типа Накидка"] = 0.02;
-    _RangeCamouflageRl["Применения радиопоглощающих материалов и радиорассеивающих масок типа МКТ-2Л"] = 0.045;
-    _RangeCamouflageRl["Применения радиопоглощающих материалов и радиорассеивающих масок типа МКТ- 5Л,4Л; РПЧ"] = 0.058;
-    _RangeCamouflageRl["Применения радиопоглощающих материалов и радиорассеивающих масок МРПК-1Л"] = 0.063;
+    _RangeCamouflageRl["Пор-02ПУ"] = 0.02;
+    _RangeCamouflageRl["Накидка"] = 0.045;
+    _RangeCamouflageRl["Козырёк из теплоизоляционного материала"] = 0.058;
+    _RangeCamouflageRl["ГМПП"] = 0.063;
     return _RangeCamouflageRl;
 }
 
@@ -134,6 +142,12 @@ qreal cmath::get_coef_for_range(QTableWidget *&tableWidget, QString key, int i)
     QMap <QString, qreal> koef_dict = get_dict_for_range_key(key);
     QString value_for_range = get_value_from_cell_widget(tableWidget->cellWidget(i,1));
     return koef_dict.value(value_for_range);
+}
+
+int cmath::get_count_for_range(QTableWidget *&tableWidget, int i)
+{
+    QString count_string_value = get_value_from_cell_widget(tableWidget->cellWidget(i,2));
+    return count_string_value.toInt();
 }
 
 QMap<QString, qreal> cmath::get_dict_for_range_key(QString key)
