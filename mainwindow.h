@@ -43,7 +43,7 @@ private:
     QComboBox *get_combo_box_camouflage_range(QMap<RangeCamouflage, QString> _range_dict);
     void set_combo_box_range_in_tableWidget(QTableWidget *tableWidget, QComboBox *comboBox_range, int i);
     QComboBox *get_combo_box_for_obj(QMap<QString,qreal> _dict);
-    QSpinBox *get_spin_box_count();
+    QSpinBox *get_spin_box_count(int max);
     bool check_on_empty_table(int _weapon_count);
     qreal get_P_detect();
 };

@@ -2140,35 +2140,7 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qjsonobject.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qjsonvalue.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qfactoryinterface.h \
-		ui_mainwindow.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QFrame \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QGroupBox \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qgroupbox.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QMenuBar \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QSpacerItem \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QStatusBar \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QToolBar \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QVBoxLayout
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ..\mainwindow.cpp
 
 qcustomplot.o: ../qcustomplot.cpp ../qcustomplot.h \

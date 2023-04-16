@@ -42,7 +42,7 @@ void MainWindow::update_table(QTableWidget *tableWidget, QMap<RangeCamouflage, Q
     for (int i=0;i<tableWidget->rowCount();i++) {
         set_combo_box_range_in_tableWidget(tableWidget, get_combo_box_camouflage_range(math->range_dict), i);
         tableWidget->setCellWidget(i,1,get_combo_box_for_obj(math->RangeCamouflageVisual));
-        tableWidget->setCellWidget(i,2,get_spin_box_count());
+        tableWidget->setCellWidget(i,2,get_spin_box_count(1000));
     }
 }
 
@@ -71,12 +71,15 @@ QComboBox *MainWindow::get_combo_box_for_obj(QMap<QString, qreal> _dict)
     return comboBox;
 }
 
-QSpinBox *MainWindow::get_spin_box_count()
+QSpinBox *MainWindow::get_spin_box_count(int max)
 {
     QSpinBox *spinBox = new QSpinBox();
     spinBox->setMinimum(1);
-    spinBox->setMaximum(30);
+    spinBox->setMaximum(max);
     spinBox->setValue(1);
+    if (max==1000) {
+        spinBox->setSingleStep(100);
+    }
     return spinBox;
 }
 
@@ -114,9 +117,11 @@ void MainWindow::on_comboBox_range_currentTextChanged(const QString &arg1)
     }
     else if (arg1=="Инфракрасный") {
         ui->tableWidget_weapons->setCellWidget(i,1,get_combo_box_for_obj(math->RangeCamouflageInfrared));
+        ui->tableWidget_weapons->setCellWidget(i,2,get_spin_box_count(30));
     }
     else if (arg1=="Радиолокационный") {
         ui->tableWidget_weapons->setCellWidget(i,1,get_combo_box_for_obj(math->RangeCamouflageRl));
+        ui->tableWidget_weapons->setCellWidget(i,2,get_spin_box_count(30));
     }
 }
 

@@ -101,7 +101,7 @@ QMap<QString, qreal> cmath::get_range_camouflage_Visual()
     _RangeCamouflageVisual["ГМПП"] = 0.9;
 //    _RangeCamouflageVisual[""] = 1.0;
     foreach (QString key, _RangeCamouflageVisual.keys()) {
-        _RangeCamouflageVisual[key] = _RangeCamouflageVisual[key]*0.1;
+        _RangeCamouflageVisual[key] = _RangeCamouflageVisual[key]*0.001*2;
     }
     return _RangeCamouflageVisual;
 }
